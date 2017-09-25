@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         recyclerView.setAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);
 
-        getSupportLoaderManager().restartLoader(0, null, this);
+        getSupportLoaderManager().initLoader(0, null, this);
 
     }
 
