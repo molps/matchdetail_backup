@@ -74,19 +74,9 @@ public final class NetworkUtils {
         long buildingDamage;
         int lastHits;
         int denies;
-
         try {
             JSONObject jsonObject = new JSONObject(response);
-            radiantWin = jsonObject.getBoolean("radiant_win");
-            duration = jsonObject.getLong("duration");
-            radiantScore = jsonObject.getInt("radiant_score");
-            direScore = jsonObject.getInt("dire_score");
-            basicData.add(new PlayerBasic(
-                    radiantWin,
-                    duration,
-                    radiantScore,
-                    direScore
-            ));
+
             JSONArray jsonArray = jsonObject.getJSONArray("players");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject player = jsonArray.getJSONObject(i);
@@ -102,6 +92,22 @@ public final class NetworkUtils {
                         lastHits,
                         denies
                 ));
+
+                basicData.add(
+                        new PlayerBasic(
+                                player.getString("personaname"),
+                                player.getInt("hero_id"),
+                                player.getInt("level"),
+                                player.getInt("kills"),
+                                player.getInt("deaths"),
+                                player.getInt("assists"),
+                                player.getInt("item_0"),
+                                player.getInt("item_1"),
+                                player.getInt("item_2"),
+                                player.getInt("item_3"),
+                                player.getInt("item_4"),
+                                player.getInt("item_5")
+                        ));
             }
 
         } catch (JSONException e) {

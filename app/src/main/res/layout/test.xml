@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="12dp">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:src="@drawable/earth_spirit_full"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PMA (Kappa)"
+                style="@style/TextAppearance.AppCompat.Body2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level: 16"
+                style="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KDA 14/7/21"
+                style="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <TableLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow android:padding="1dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/travel_boots_lg" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/force_staff_lg" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sheepstick_lg" />
+        </TableRow>
+
+        <TableRow android:padding="1dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/blink_lg" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ultimate_scepter_lg" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cyclone_lg" />
+        </TableRow>
+
+        <TableRow android:padding="1dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/urn_of_shadows_lg" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mekansm_lg" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/vladmir_lg" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</LinearLayout>
