@@ -2,7 +2,9 @@ package com.molps.matchdetails;
 
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,11 +95,14 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class NameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private PlayerBasic player;
+        private View topDivider, botDivider;
         private TextView playerName, kda, level;
         private ImageView hero, slot0, slot1, slot2, slot3, slot4, slot5;
 
         public NameViewHolder(View itemView) {
             super(itemView);
+            topDivider = itemView.findViewById(R.id.top_divider);
+            botDivider = itemView.findViewById(R.id.bot_divider);
             playerName = itemView.findViewById(R.id.player_name);
             kda = itemView.findViewById(R.id.kda);
             level = itemView.findViewById(R.id.hero_level);
@@ -105,12 +113,26 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             slot3 = itemView.findViewById(R.id.item_3);
             slot4 = itemView.findViewById(R.id.item_4);
             slot5 = itemView.findViewById(R.id.item_5);
+
+
             itemView.setOnClickListener(this);
         }
 
         private void bindType() {
+            level.setVisibility(View.INVISIBLE);
+            if (getAdapterPosition() == 0)
+                topDivider.setVisibility(View.INVISIBLE);
+            else
+                topDivider.setVisibility(View.VISIBLE);
+            if (getAdapterPosition() == getItemCount() - 1)
+                botDivider.setVisibility(View.VISIBLE);
+            else
+                botDivider.setVisibility(View.INVISIBLE);
             player = (PlayerBasic) basicData.get(getAdapterPosition());
-            playerName.setText(player.getPlayerName());
+            if (!TextUtils.isEmpty(player.getPlayerName())) {
+                playerName.setText(player.getPlayerName());
+            } else
+                playerName.setText("Anonymous");
             kda.setText(player.getKDA());
             level.setText(String.valueOf(player.getHeroLevel()));
             glide.load(ImageResources.getItem(c, player.getItem0())).into(slot0);
@@ -119,7 +141,18 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             glide.load(ImageResources.getItem(c, player.getItem3())).into(slot3);
             glide.load(ImageResources.getItem(c, player.getItem4())).into(slot4);
             glide.load(ImageResources.getItem(c, player.getItem5())).into(slot5);
-            glide.load(ImageResources.getHero(c, player.getHeroImageId())).into(hero);
+            glide.load(ImageResources.getHero(c, player.getHeroImageId())).listener(new RequestListener<String, GlideDrawable>() {
+                @Override
+                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    level.setVisibility(View.VISIBLE);
+                    return false;
+                }
+            }).into(hero);
 
 
         }
@@ -132,7 +165,8 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 detailData.add(position, null);
                 notifyItemInserted(position);
                 player.setExpandend(true);
-                recyclerView.scrollToPosition(position);
+                if (((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition() <= position)
+                    recyclerView.scrollToPosition(position);
 
                 Log.v(LOG_TAG, "DOTAMATCH: nameData.size = " + nameData.size() + " totalCount size: " + getItemCount());
             } else {
@@ -157,12 +191,12 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         private void bindType() {
-            PlayerDetail player = (PlayerDetail) detailData.get(getAdapterPosition()-1);
+            PlayerDetail player = (PlayerDetail) detailData.get(getAdapterPosition() - 1);
 
-          //  heroDamage.setText(String.valueOf(player.getHeroDamage()));
-            towerDamage.setText(String.valueOf(player.getBuildingDamage()));
-            lastHits.setText(String.valueOf(player.getLastHits()));
-            denies.setText(String.valueOf(player.getDenies()));
+            heroDamage.setText("Hero damage: " + String.valueOf(player.getHeroDamage()));
+            towerDamage.setText("Building damage: " + String.valueOf(player.getBuildingDamage()));
+            lastHits.setText("Last hits: " + String.valueOf(player.getLastHits()));
+            denies.setText("Denies: " + String.valueOf(player.getDenies()));
 
 
         }

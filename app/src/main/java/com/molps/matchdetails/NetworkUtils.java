@@ -80,7 +80,7 @@ public final class NetworkUtils {
             JSONArray jsonArray = jsonObject.getJSONArray("players");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject player = jsonArray.getJSONObject(i);
-                name = player.getString("personaname");
+                name = player.optString("personaname");
                 heroDamage = player.getLong("hero_damage");
                 buildingDamage = player.getLong("tower_damage");
                 lastHits = player.getInt("last_hits");
@@ -95,7 +95,7 @@ public final class NetworkUtils {
 
                 basicData.add(
                         new PlayerBasic(
-                                player.getString("personaname"),
+                                player.optString("personaname"),
                                 player.getInt("hero_id"),
                                 player.getInt("level"),
                                 player.getInt("kills"),
@@ -111,6 +111,7 @@ public final class NetworkUtils {
             }
 
         } catch (JSONException e) {
+
             e.printStackTrace();
         }
 

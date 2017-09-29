@@ -8,7 +8,6 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -18,28 +17,25 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<List<PlayerStats>>> {
 
     private RecAdapter mAdapter;
+    private String x = "";
+    private int prvi;
+    private int poslednji;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recView);
-        mAdapter = new RecAdapter(this, Glide.with(this),recyclerView);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recView);
+        mAdapter = new RecAdapter(this, Glide.with(this), recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);
 
-        getSupportLoaderManager().initLoader(0, null, this);
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, ImageResources.getItem(MainActivity.this, 229), Toast.LENGTH_SHORT).show();
-            }
-        });
 
+        getSupportLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -77,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         @Override
         public List<List<PlayerStats>> loadInBackground() {
-            return NetworkUtils.fetchData(3319548361L);
+            return NetworkUtils.fetchData(3311498442L);
         }
 
         @Override

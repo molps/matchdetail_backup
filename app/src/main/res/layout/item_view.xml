@@ -3,149 +3,165 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:baselineAligned="true"
-    android:layout_marginTop="12dp"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+    <View
+        android:id="@+id/top_divider"
+        android:background="#d3d3d3"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/hero_image"
-                android:layout_width="60dp"
-                android:layout_height="45dp"
-                android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/earth_spirit_full" />
-
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="60dp"
-                android:id="@+id/hero_level"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/hero_image"
-                android:background="#63000000"
-                android:gravity="end"
-                android:text="16"
-                android:textColor="@android:color/white"
-                android:textSize="11sp" />
-        </RelativeLayout>
-
-
         <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/hero_image"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/earth_spirit_full" />
+
+                <TextView
+                    android:id="@+id/hero_level"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/hero_image"
+                    android:background="#63000000"
+                    android:gravity="end"
+                    android:text="16"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/player_name"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Fear he who fears nothing"
+                    android:textSize="15sp" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="K/D/A"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/kda"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21/12/22"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:orientation="vertical">
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp">
 
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/player_name"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Fear he who fears nothing"
-                android:textSize="15sp" />
+            <TableRow>
 
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="K/D/A"
-                android:textSize="11sp" />
+                <ImageView
+                    android:id="@+id/item_0"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/travel_boots_lg" />
 
-            <TextView
-                android:id="@+id/kda"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21/12/22"
-                android:textSize="11sp" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/item_1"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginStart="1dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/force_staff_lg" />
+
+                <ImageView
+                    android:id="@+id/item_2"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginStart="1dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sheepstick_lg" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp">
+
+                <ImageView
+                    android:id="@+id/item_3"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/blink_lg" />
+
+                <ImageView
+                    android:id="@+id/item_4"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginStart="1dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ultimate_scepter_lg" />
+
+                <ImageView
+                    android:id="@+id/item_5"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginStart="1dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cyclone_lg" />
+            </TableRow>
+
+
+        </TableLayout>
     </LinearLayout>
 
-
-    <TableLayout
-        android:layout_gravity="center_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp">
-
-        <TableRow>
-
-            <ImageView
-                android:id="@+id/item_0"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/travel_boots_lg" />
-
-            <ImageView
-                android:id="@+id/item_1"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginStart="1dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/force_staff_lg" />
-
-            <ImageView
-                android:id="@+id/item_2"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginStart="1dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/sheepstick_lg" />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="1dp">
-
-            <ImageView
-                android:id="@+id/item_3"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/blink_lg" />
-
-            <ImageView
-                android:id="@+id/item_4"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginStart="1dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ultimate_scepter_lg" />
-
-            <ImageView
-                android:id="@+id/item_5"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginStart="1dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/cyclone_lg" />
-        </TableRow>
-
-
-
-
-    </TableLayout>
-
+    <View
+        android:visibility="invisible"
+        android:id="@+id/bot_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#d3d3d3" />
 </LinearLayout>
 
