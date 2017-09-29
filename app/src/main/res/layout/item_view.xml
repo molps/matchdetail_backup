@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:orientation="vertical">
     <View
         android:id="@+id/top_divider"
@@ -156,12 +157,5 @@
         </TableLayout>
     </LinearLayout>
 
-    <View
-        android:visibility="invisible"
-        android:id="@+id/bot_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="#d3d3d3" />
 </LinearLayout>
 

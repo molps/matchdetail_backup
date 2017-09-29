@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         @Override
         public List<List<PlayerStats>> loadInBackground() {
-            return NetworkUtils.fetchData(3319664483L);
+            return NetworkUtils.fetchData(3319548361L);
         }
 
         @Override

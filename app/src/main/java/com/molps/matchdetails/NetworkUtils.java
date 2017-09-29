@@ -89,6 +89,7 @@ public final class NetworkUtils {
                 detailData.add(new PlayerDetail(
                         heroDamage,
                         buildingDamage,
+                        player.getLong("hero_healing"),
                         lastHits,
                         denies,
                         player.getInt("gold_per_min"),

@@ -5,6 +5,7 @@ public class PlayerDetail implements PlayerStats {
 
     private long heroDamage;
     private long buildingDamage;
+    private long heroHealing;
     private int lastHits;
     private int denies;
     private int gpm;
@@ -18,9 +19,10 @@ public class PlayerDetail implements PlayerStats {
     public PlayerDetail() {
     }
 
-    public PlayerDetail(long heroDamage, long buildingDamage, int lastHits, int denies, int gpm, int xpm, int obs, int sen, int backpack0, int backpack1, int backpack2) {
+    public PlayerDetail(long heroDamage, long buildingDamage, long heroHealing, int lastHits, int denies, int gpm, int xpm, int obs, int sen, int backpack0, int backpack1, int backpack2) {
         this.heroDamage = heroDamage;
         this.buildingDamage = buildingDamage;
+        this.heroHealing = heroHealing;
         this.lastHits = lastHits;
         this.denies = denies;
         this.gpm = gpm;
@@ -30,6 +32,10 @@ public class PlayerDetail implements PlayerStats {
         this.backpack2 = backpack2;
         this.obs = obs;
         this.sen = sen;
+    }
+
+    public long getHeroHealing() {
+        return heroHealing;
     }
 
     public int getObs() {

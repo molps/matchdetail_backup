@@ -95,14 +95,13 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class NameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private PlayerBasic player;
-        private View topDivider, botDivider;
+        private View topDivider;
         private TextView playerName, kda, level;
         private ImageView hero, slot0, slot1, slot2, slot3, slot4, slot5;
 
         public NameViewHolder(View itemView) {
             super(itemView);
             topDivider = itemView.findViewById(R.id.top_divider);
-            botDivider = itemView.findViewById(R.id.bot_divider);
             playerName = itemView.findViewById(R.id.player_name);
             kda = itemView.findViewById(R.id.kda);
             level = itemView.findViewById(R.id.hero_level);
@@ -124,10 +123,6 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 topDivider.setVisibility(View.INVISIBLE);
             else
                 topDivider.setVisibility(View.VISIBLE);
-            if (getAdapterPosition() == getItemCount() - 1)
-                botDivider.setVisibility(View.VISIBLE);
-            else
-                botDivider.setVisibility(View.INVISIBLE);
             player = (PlayerBasic) basicData.get(getAdapterPosition());
             if (!TextUtils.isEmpty(player.getPlayerName())) {
                 playerName.setText(player.getPlayerName());
@@ -180,18 +175,24 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public class DetailViewHolder extends RecyclerView.ViewHolder {
-        private TextView heroDamage, towerDamage, lastHits, denies, gpm, xpm, obs, sen;
+        private TextView heroDamage, towerDamage, heroHealing, lastHits, denies, gpm, xpm, obs, sen;
+        private ImageView backpack0, backpack1, backpack2;
 
         public DetailViewHolder(View itemView) {
             super(itemView);
             heroDamage = itemView.findViewById(R.id.herodamage_tv);
             towerDamage = itemView.findViewById(R.id.towerdamage_tv);
+            heroHealing = itemView.findViewById(R.id.hero_healing_tv);
             lastHits = itemView.findViewById(R.id.lasthits_tv);
             denies = itemView.findViewById(R.id.denies_tv);
             gpm = itemView.findViewById(R.id.gpm_tv);
             xpm = itemView.findViewById(R.id.xpm_tv);
             obs = itemView.findViewById(R.id.obs_tv);
             sen = itemView.findViewById(R.id.sen_tv);
+            backpack0 = itemView.findViewById(R.id.backpack_0);
+            backpack1 = itemView.findViewById(R.id.backpack_1);
+            backpack2 = itemView.findViewById(R.id.backpack_2);
+
         }
 
         private void bindType() {
@@ -199,12 +200,16 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             heroDamage.setText("Hero damage: " + String.valueOf(player.getHeroDamage()));
             towerDamage.setText("Building damage: " + String.valueOf(player.getBuildingDamage()));
+            heroHealing.setText("Hero healing: " + String.valueOf(player.getHeroHealing()));
             lastHits.setText("Last hits: " + String.valueOf(player.getLastHits()));
             denies.setText("Denies: " + String.valueOf(player.getDenies()));
             gpm.setText("GPM: " + String.valueOf(player.getGpm()));
             xpm.setText("XPM: " + String.valueOf(player.getXpm()));
             obs.setText(String.valueOf(player.getObs()) + "x");
             sen.setText(String.valueOf(player.getSen()) + "x");
+            glide.load(ImageResources.getItem(c, player.getBackpack0())).into(backpack0);
+            glide.load(ImageResources.getItem(c, player.getBackpack1())).into(backpack1);
+            glide.load(ImageResources.getItem(c, player.getBackpack2())).into(backpack2);
 
 
         }
