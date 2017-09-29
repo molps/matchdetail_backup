@@ -90,7 +90,14 @@ public final class NetworkUtils {
                         heroDamage,
                         buildingDamage,
                         lastHits,
-                        denies
+                        denies,
+                        player.getInt("gold_per_min"),
+                        player.getInt("xp_per_min"),
+                        player.optInt("purchase_ward_observer"),
+                        player.optInt("purchase_ward_sentry"),
+                        player.getInt("backpack_0"),
+                        player.getInt("backpack_1"),
+                        player.getInt("backpack_2")
                 ));
 
                 basicData.add(

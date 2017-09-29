@@ -180,7 +180,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public class DetailViewHolder extends RecyclerView.ViewHolder {
-        private TextView heroDamage, towerDamage, lastHits, denies;
+        private TextView heroDamage, towerDamage, lastHits, denies, gpm, xpm, obs, sen;
 
         public DetailViewHolder(View itemView) {
             super(itemView);
@@ -188,6 +188,10 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             towerDamage = itemView.findViewById(R.id.towerdamage_tv);
             lastHits = itemView.findViewById(R.id.lasthits_tv);
             denies = itemView.findViewById(R.id.denies_tv);
+            gpm = itemView.findViewById(R.id.gpm_tv);
+            xpm = itemView.findViewById(R.id.xpm_tv);
+            obs = itemView.findViewById(R.id.obs_tv);
+            sen = itemView.findViewById(R.id.sen_tv);
         }
 
         private void bindType() {
@@ -197,6 +201,10 @@ public class RecAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             towerDamage.setText("Building damage: " + String.valueOf(player.getBuildingDamage()));
             lastHits.setText("Last hits: " + String.valueOf(player.getLastHits()));
             denies.setText("Denies: " + String.valueOf(player.getDenies()));
+            gpm.setText("GPM: " + String.valueOf(player.getGpm()));
+            xpm.setText("XPM: " + String.valueOf(player.getXpm()));
+            obs.setText(String.valueOf(player.getObs()) + "x");
+            sen.setText(String.valueOf(player.getSen()) + "x");
 
 
         }
